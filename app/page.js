@@ -16,11 +16,8 @@ export default function Home() {
           {' '}
           <span className="text-black dark:text-white">TaskMaster</span>.
         </h1>
-        <div className="flex flex-col items-center justify-center">
-          <Image src={devices} 
-          alt="devices" 
-          sizes="(max-width: 768px) 100vw"
-          />
+        <div className="">
+          <Image src={devices} alt="devices" />
         </div>
             
       </div>

@@ -9,32 +9,31 @@ import { BsSunFill, BsFillMoonFill } from 'react-icons/bs';
 export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   const { systemTheme, theme, setTheme } = useTheme();
-  setTheme(systemTheme);
   
   useEffect(() => {
     setMounted(true);
+    setTheme(systemTheme);
   }, []);
 
 
   const renderChange = mounted ? (
-    <button
-      aria-label="Toggle Dark Mode"
-      type="button"
-      className="bg-[#0D091A]/90  dark:bg-gray-800 rounded-full p-3 h-10 w-10"
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-    >
+    <div className="bg-[#0D091A]/90 flex items-center justify-center dark:bg-gray-800 rounded-full p-1 h-10 w-10">
       {theme === "dark" ? (
-        <BsSunFill className="text-yellow-400 bg-inherit" />
+        <button onClick={() => setTheme('light')}>
+          <BsSunFill className="text-yellow-400 bg-inherit" />
+        </button>
       ) : (
-        <BsFillMoonFill className="text-yellow-400" />
+        <button onClick={() => setTheme('dark')}>
+          <BsFillMoonFill className="text-yellow-400" />
+        </button>
       )}
-    </button>
+    </div>
   ) : null;
 
   return (
     <div className="flex px-6 py-4 justify-between items-center">
         <p className="text-3xl text-red-500 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-pink-500 to-red-500">TaskMaster</p>
-        <div className="hidden font-montserrat md:flex items-center justify-center">
+        <div className="hidden font-montserrat md:flex items-center gap-8 justify-center">
           <p className="px-4 py-2 rounded-md">Features</p>
           <p className="px-4 py-2 rounded-md">Docs</p>
           <p className="px-4 py-2 rounded-md">Pricing</p>     
