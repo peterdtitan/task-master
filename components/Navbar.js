@@ -1,6 +1,6 @@
 'use client';
 import React, {useState, useEffect}  from 'react';
-import { ThemeProvider } from "next-themes";
+
 import { useTheme } from "next-themes";
 
 import { BsSunFill, BsFillMoonFill } from 'react-icons/bs';
@@ -8,11 +8,13 @@ import { BsSunFill, BsFillMoonFill } from 'react-icons/bs';
 
 export default function Navbar() {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { systemTheme, theme, setTheme } = useTheme();
+  setTheme(systemTheme);
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  useEffect(() => setMounted(true), []);
-
-  //<p className="text-white bg-gradient-to-r from-blue-400 via-pink-500 to-red-500">Hello, world!</p>
 
   const renderChange = mounted ? (
     <button
